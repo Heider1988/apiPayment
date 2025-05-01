@@ -118,4 +118,4 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para m
 
 ## Contato
 
-Para mais informações, entre em contato através do email: seuemail@exemplo.com
+Para mais informações, entre em contato através deste link: https://www.linkedin.com/in/heider1988/
