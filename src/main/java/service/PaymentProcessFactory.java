@@ -9,31 +9,31 @@ import service.impl.BankSlipPaymentProcessorImpl;
 import service.impl.CreditCardPaymentProcessorImpl;
 import service.impl.PixPaymentProcessor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class PaymentProcessFactory {
 
-    private final CreditCardPaymentProcessorImpl creditCardPaymentProcessorImpl;
-    private final BankSlipPaymentProcessorImpl bankSlipPaymentProcessorImpl;
-    private final PixPaymentProcessor pixPaymentProcessor;
+    private final Map<Class<? extends PaymentRequest>, PaymentProcessorService> processors = new HashMap<>();
 
-    public PaymentProcessFactory(CreditCardPaymentProcessorImpl creditCardPaymentProcessorImpl, BankSlipPaymentProcessorImpl bankSlipPaymentProcessorImpl, PixPaymentProcessor pixPaymentProcessor) {
-        this.creditCardPaymentProcessorImpl = creditCardPaymentProcessorImpl;
-        this.bankSlipPaymentProcessorImpl = bankSlipPaymentProcessorImpl;
-        this.pixPaymentProcessor = pixPaymentProcessor;
+    public PaymentProcessFactory(CreditCardPaymentProcessorImpl creditCardPaymentProcessorImpl,
+                                 BankSlipPaymentProcessorImpl bankSlipPaymentProcessorImpl,
+                                 PixPaymentProcessor pixPaymentProcessor) {
+        // Registra os processadores no mapa
+        processors.put(CreditCardPaymentRequest.class, creditCardPaymentProcessorImpl);
+        processors.put(BankSlipPaymentRequest.class, bankSlipPaymentProcessorImpl);
+        processors.put(PixPaymentRequest.class, pixPaymentProcessor);
     }
 
     // Factory Method
     public PaymentProcessorService createProcessor(PaymentRequest paymentRequest) {
-        if (paymentRequest instanceof CreditCardPaymentRequest) {
-            return creditCardPaymentProcessorImpl;
-        } else if (paymentRequest instanceof BankSlipPaymentRequest) {
-            return bankSlipPaymentProcessorImpl;
-        } else if (paymentRequest instanceof PixPaymentRequest) {
-            return pixPaymentProcessor;
-        } else {
-            throw new IllegalArgumentException("Tipo de pagamento não suportado");
+        PaymentProcessorService processor = processors.get(paymentRequest.getClass());
+
+        if (processor == null) {
+            throw new IllegalArgumentException("Tipo de pagamento não suportado: " + paymentRequest.getClass().getSimpleName());
         }
+
+        return processor;
     }
-
-
 }

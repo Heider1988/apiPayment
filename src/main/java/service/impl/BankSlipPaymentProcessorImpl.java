@@ -18,12 +18,10 @@ import java.util.UUID;
 public class BankSlipPaymentProcessorImpl implements PaymentProcessorService {
 
     private final PaymentRepository paymentRepository;
-    private final PaymentEntity paymentEntity;
 
     @Autowired
-    public BankSlipPaymentProcessorImpl(PaymentRepository paymentRepository, PaymentEntity paymentEntity) {
+    public BankSlipPaymentProcessorImpl(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
-        this.paymentEntity = paymentEntity;
     }
 
     @Override
@@ -33,6 +31,7 @@ public class BankSlipPaymentProcessorImpl implements PaymentProcessorService {
         // Lógica específica para processar pagamento com boleto
         // Aqui você geraria o código de barras do boleto
 
+        PaymentEntity paymentEntity = new PaymentEntity();
         paymentEntity.setAmount(request.getAmount());
         paymentEntity.setPaymentMethod(PaymentMethod.BANK_SLIP);
         paymentEntity.setTransactionId(UUID.randomUUID().toString());
