@@ -18,11 +18,9 @@ import java.util.UUID;
 public class PixPaymentProcessor implements PaymentProcessorService {
 
     private final PaymentRepository paymentRepository;
-    private final PaymentEntity paymentEntity;
 
-    public PixPaymentProcessor(PaymentRepository paymentRepository, PaymentEntity paymentEntity) {
+    public PixPaymentProcessor(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
-        this.paymentEntity = paymentEntity;
     }
 
     @Override
@@ -31,6 +29,7 @@ public class PixPaymentProcessor implements PaymentProcessorService {
 
         // Lógica específica para processar pagamento com PIX
 
+        PaymentEntity paymentEntity = new PaymentEntity();
         paymentEntity.setAmount(request.getAmount());
         paymentEntity.setPaymentMethod(PaymentMethod.PIX);
         paymentEntity.setTransactionId(UUID.randomUUID().toString());

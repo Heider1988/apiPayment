@@ -18,12 +18,10 @@ import java.util.UUID;
 public class CreditCardPaymentProcessorImpl implements PaymentProcessorService {
 
     private final PaymentRepository paymentRepository;
-    private final PaymentEntity paymentEntity;
 
     @Autowired
-    public CreditCardPaymentProcessorImpl(PaymentRepository paymentRepository, PaymentEntity paymentEntity) {
+    public CreditCardPaymentProcessorImpl(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
-        this.paymentEntity = paymentEntity;
     }
 
     @Override
@@ -33,6 +31,7 @@ public class CreditCardPaymentProcessorImpl implements PaymentProcessorService {
         // Lógica específica para processar pagamento com cartão de crédito
         // Aqui você poderia integrar com um gateway de pagamento real
 
+        PaymentEntity paymentEntity = new PaymentEntity();
         paymentEntity.setAmount(request.getAmount());
         paymentEntity.setPaymentMethod(PaymentMethod.CREDIT_CARD);
         paymentEntity.setTransactionId(UUID.randomUUID().toString());
