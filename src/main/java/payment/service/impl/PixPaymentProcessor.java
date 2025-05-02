@@ -1,15 +1,15 @@
-package service.impl;
+package payment.service.impl;
 
 
-import model.PaymentMethod;
-import model.PaymentStatus;
-import model.entities.PaymentEntity;
-import model.repository.PaymentRepository;
+import payment.model.PaymentMethod;
+import payment.model.PaymentStatus;
+import payment.model.entities.PaymentEntity;
+import payment.model.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
-import request.PaymentRequest;
-import request.PixPaymentRequest;
-import response.PaymentResponse;
-import service.PaymentProcessorService;
+import payment.request.PaymentRequest;
+import payment.request.PixPaymentRequest;
+import payment.response.PaymentResponse;
+import payment.service.PaymentProcessorService;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
