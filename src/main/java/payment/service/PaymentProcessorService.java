@@ -1,7 +1,7 @@
-package service;
+package payment.service;
 
-import request.PaymentRequest;
-import response.PaymentResponse;
+import payment.request.PaymentRequest;
+import payment.response.PaymentResponse;
 
 public interface PaymentProcessorService {
     PaymentResponse processPayment(PaymentRequest paymentRequest);

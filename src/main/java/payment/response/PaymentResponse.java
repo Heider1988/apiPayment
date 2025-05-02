@@ -1,12 +1,12 @@
-package response;
+package payment.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.PaymentMethod;
-import model.PaymentStatus;
+import payment.model.PaymentMethod;
+import payment.model.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

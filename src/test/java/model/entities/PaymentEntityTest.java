@@ -1,8 +1,9 @@
 package model.entities;
 
-import model.PaymentMethod;
-import model.PaymentStatus;
-import model.repository.PaymentRepository;
+import payment.model.PaymentMethod;
+import payment.model.PaymentStatus;
+import payment.model.entities.PaymentEntity;
+import payment.model.repository.PaymentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

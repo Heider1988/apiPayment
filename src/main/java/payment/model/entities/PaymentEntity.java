@@ -1,11 +1,11 @@
-package model.entities;
+package payment.model.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.PaymentMethod;
-import model.PaymentStatus;
+import payment.model.PaymentMethod;
+import payment.model.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

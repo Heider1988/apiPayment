@@ -1,8 +1,8 @@
-package service;
+package payment.service;
 
 import org.springframework.stereotype.Service;
-import request.PaymentRequest;
-import response.PaymentResponse;
+import payment.request.PaymentRequest;
+import payment.response.PaymentResponse;
 
 @Service
 public class PaymentService {
